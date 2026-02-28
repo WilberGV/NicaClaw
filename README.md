@@ -13,7 +13,6 @@
 
   <p>
     <a href="./INSTALL.md"><b>Installation Guide</b></a> •
-    <a href="https://discord.gg/V4sAZ9XWpN"><b>Discord</b></a> •
     <a href="https://github.com/WilberGV/NicaClaw"><b>GitHub</b></a>
   </p>
 </div>

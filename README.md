@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/logo.png" alt="nicaclaw-lite" width="400">
+  <img src="assets/logo.png" alt="nicaclaw-lite text-center" width="400">
 
   <h1>NicaClaw-lite</h1>
   <p><b>Ultra-Lightweight · Multi-API · AI-Bootstrapped Agent</b></p>
@@ -14,7 +14,7 @@
   <p>
     <a href="./INSTALL.md"><b>Installation Guide</b></a> •
     <a href="https://discord.gg/V4sAZ9XWpN"><b>Discord</b></a> •
-    <a href="https://github.com/WilberGV"><b>GitHub</b></a>
+    <a href="https://github.com/WilberGV/NicaClaw"><b>GitHub</b></a>
   </p>
 </div>
 
@@ -39,8 +39,28 @@
 - 🧪 **Multi-API Engine**: Native support for OpenRouter, Gemini, Anthropic, OpenAI, and more.
 - 🔄 **Auto-Fallback**: If one API key fails or hits limits, it automatically switches to the next configured agent.
 - ⚖️ **Load Balancing**: Distribute requests across multiple endpoints for maximum reliability.
-- 🌍 **Cross-Platform**: Runs natively on Windows, Linux (x86/ARM/RISC-V), and Android (Termux).
+- 🌍 **Cross-Platform**: Runs natively on Windows, Linux (x86/ARM/RISC-V/ARM64), and **Android (Termux)**.
 - 🐜 **SIMD Optimized**: High-performance AVX2/SIMD code for fast local processing.
+- 🛠 **System Tools API**: Execute system commands and access local files right from your chat prompt.
+
+---
+
+## 📱 Running on Android (Termux)
+
+NicaClaw-lite is specifically designed with extreme portability in mind. You can run it locally on your smartphone using Termux.
+
+```bash
+# 1. Download the ARM64 binary
+wget https://github.com/WilberGV/NicaClaw/releases/latest/download/nicaclaw-lite-linux-arm64
+
+# 2. Make it executable
+chmod +x nicaclaw-lite-linux-arm64
+
+# 3. Quick setup & run
+termux-chroot ./nicaclaw-lite-linux-arm64 onboard
+```
+
+For detailed platform-specific steps, see the [Full Installation Guide](./INSTALL.md).
 
 ---
 
@@ -66,10 +86,10 @@ If the primary key fails, NicaClaw-lite **instantly recovers** using the fallbac
 
 ---
 
-## 📦 Quick Start
+## 📦 Quick Start (Windows / Linux)
 
 ### 1. Install
-Download the binary for your platform from [Releases](https://github.com/WilberGV/nicaclaw-lite/releases) or see the [**Full Installation Guide**](./INSTALL.md).
+Download the binary for your platform from [Releases](https://github.com/WilberGV/NicaClaw/releases) or see the [INSTALL.md](./INSTALL.md).
 
 ### 2. Onboard
 ```bash
@@ -105,6 +125,5 @@ NicaClaw-lite prioritizes your safety. By default, it operates in a strict works
 ## 🤝 Community & Roadmap
 We are building the future of edge AI. 
 - [Roadmap](./docs/ROADMAP.md)
-
 
 **Maintainer**: [WilberGV](https://github.com/WilberGV)

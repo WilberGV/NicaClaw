@@ -1,5 +1,7 @@
+﻿//go:build !lite
+
 // nicaclawlite - Ultra-lightweight personal AI agent
-// WeCom Bot (企业微信智能机器人) channel implementation
+// WeCom Bot (ä¼ä¸šå¾®ä¿¡æ™ºèƒ½æœºå™¨äºº) channel implementation
 // Uses webhook callback mode for receiving messages and webhook API for sending replies
 
 package channels
@@ -28,7 +30,7 @@ import (
 	"nicaclaw-lite/pkg/utils"
 )
 
-// WeComBotChannel implements the Channel interface for WeCom Bot (企业微信智能机器人)
+// WeComBotChannel implements the Channel interface for WeCom Bot (ä¼ä¸šå¾®ä¿¡æ™ºèƒ½æœºå™¨äºº)
 // Uses webhook callback mode - simpler than WeCom App but only supports passive replies
 type WeComBotChannel struct {
 	*BaseChannel
@@ -226,7 +228,7 @@ func (c *WeComBotChannel) handleVerification(ctx context.Context, w http.Respons
 	}
 
 	// Decrypt echostr
-	// For AIBOT (智能机器人), receiveid should be empty string ""
+	// For AIBOT (æ™ºèƒ½æœºå™¨äºº), receiveid should be empty string ""
 	// Reference: https://developer.work.weixin.qq.com/document/path/101033
 	decryptedEchoStr, err := WeComDecryptMessageWithVerify(echostr, c.config.EncodingAESKey, "")
 	if err != nil {
@@ -288,7 +290,7 @@ func (c *WeComBotChannel) handleMessageCallback(ctx context.Context, w http.Resp
 	}
 
 	// Decrypt message
-	// For AIBOT (智能机器人), receiveid should be empty string ""
+	// For AIBOT (æ™ºèƒ½æœºå™¨äºº), receiveid should be empty string ""
 	// Reference: https://developer.work.weixin.qq.com/document/path/101033
 	decryptedMsg, err := WeComDecryptMessageWithVerify(encryptedMsg.Encrypt, c.config.EncodingAESKey, "")
 	if err != nil {
@@ -603,3 +605,4 @@ func pkcs7UnpadWeCom(data []byte) ([]byte, error) {
 	}
 	return data[:len(data)-padding], nil
 }
+

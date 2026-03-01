@@ -1,3 +1,5 @@
+﻿//go:build !lite
+
 package channels
 
 import (
@@ -604,3 +606,4 @@ func (c *LINEChannel) downloadContent(messageID, filename string) string {
 		},
 	})
 }
+

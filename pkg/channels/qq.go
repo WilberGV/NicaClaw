@@ -1,3 +1,5 @@
+﻿//go:build !lite
+
 package channels
 
 import (
@@ -245,3 +247,4 @@ func (c *QQChannel) isDuplicate(messageID string) bool {
 
 	return false
 }
+

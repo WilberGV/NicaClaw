@@ -1,3 +1,5 @@
+﻿//go:build !lite
+
 package channels
 
 import (
@@ -29,7 +31,7 @@ type DiscordChannel struct {
 	transcriber *voice.GroqTranscriber
 	ctx         context.Context
 	typingMu    sync.Mutex
-	typingStop  map[string]chan struct{} // chatID → stop signal
+	typingStop  map[string]chan struct{} // chatID â†’ stop signal
 	botUserID   string                   // stored for mention checking
 }
 
@@ -277,7 +279,7 @@ func (c *DiscordChannel) handleMessage(s *discordgo.Session, m *discordgo.Messag
 		content = "[media only]"
 	}
 
-	// Start typing after all early returns — guaranteed to have a matching Send()
+	// Start typing after all early returns â€” guaranteed to have a matching Send()
 	c.startTyping(m.ChannelID)
 
 	logger.DebugCF("discord", "Received message", map[string]any{
@@ -371,3 +373,4 @@ func (c *DiscordChannel) stripBotMention(text string) string {
 	text = strings.ReplaceAll(text, fmt.Sprintf("<@!%s>", c.botUserID), "")
 	return strings.TrimSpace(text)
 }
+

@@ -1,3 +1,5 @@
+﻿//go:build !lite
+
 package channels
 
 import (
@@ -982,3 +984,4 @@ func (c *OneBotChannel) checkGroupTrigger(
 
 	return false, content
 }
+

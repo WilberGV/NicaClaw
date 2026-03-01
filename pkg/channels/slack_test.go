@@ -1,3 +1,5 @@
+﻿//go:build !lite
+
 package channels
 
 import (
@@ -172,3 +174,4 @@ func TestSlackChannelIsAllowed(t *testing.T) {
 		}
 	})
 }
+

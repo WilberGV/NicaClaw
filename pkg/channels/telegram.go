@@ -1,3 +1,5 @@
+﻿//go:build !lite
+
 package channels
 
 import (
@@ -361,7 +363,7 @@ func (c *TelegramChannel) handleMessage(ctx context.Context, message *telego.Mes
 	_, thinkCancel := context.WithTimeout(ctx, 5*time.Minute)
 	c.stopThinking.Store(chatIDStr, &thinkingCancel{fn: thinkCancel})
 
-	pMsg, err := c.bot.SendMessage(ctx, tu.Message(tu.ID(chatID), "Thinking... 💭"))
+	pMsg, err := c.bot.SendMessage(ctx, tu.Message(tu.ID(chatID), "Thinking... ðŸ’­"))
 	if err == nil {
 		pID := pMsg.MessageID
 		c.placeholders.Store(chatIDStr, pID)
@@ -466,7 +468,7 @@ func markdownToTelegramHTML(text string) string {
 
 	text = reStrike.ReplaceAllString(text, "<s>$1</s>")
 
-	text = reListItem.ReplaceAllString(text, "• ")
+	text = reListItem.ReplaceAllString(text, "â€¢ ")
 
 	for i, code := range inlineCodes.codes {
 		escaped := escapeHTML(code)
@@ -537,3 +539,4 @@ func escapeHTML(text string) string {
 	text = strings.ReplaceAll(text, ">", "&gt;")
 	return text
 }
+

@@ -1,3 +1,5 @@
+﻿//go:build !lite
+
 // nicaclawlite - Ultra-lightweight personal AI agent
 // DingTalk channel implementation using Stream Mode
 
@@ -17,7 +19,7 @@ import (
 	"nicaclaw-lite/pkg/utils"
 )
 
-// DingTalkChannel implements the Channel interface for DingTalk (钉钉)
+// DingTalkChannel implements the Channel interface for DingTalk (é’‰é’‰)
 // It uses WebSocket for receiving messages via stream mode and API for sending
 type DingTalkChannel struct {
 	*BaseChannel
@@ -202,3 +204,4 @@ func (c *DingTalkChannel) SendDirectReply(ctx context.Context, sessionWebhook, c
 
 	return nil
 }
+

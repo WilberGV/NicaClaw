@@ -1,3 +1,5 @@
+﻿//go:build !lite
+
 package channels
 
 import "testing"
@@ -50,3 +52,4 @@ func TestBaseChannelIsAllowed(t *testing.T) {
 		})
 	}
 }
+

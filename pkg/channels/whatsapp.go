@@ -1,3 +1,5 @@
+﻿//go:build !lite
+
 package channels
 
 import (
@@ -193,3 +195,4 @@ func (c *WhatsAppChannel) handleIncomingMessage(msg map[string]any) {
 
 	c.HandleMessage(senderID, chatID, content, mediaPaths, metadata)
 }
+

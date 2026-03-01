@@ -1,3 +1,5 @@
+﻿//go:build !lite
+
 package channels
 
 import (
@@ -441,3 +443,4 @@ func parseSlackChatID(chatID string) (channelID, threadTS string) {
 	}
 	return channelID, threadTS
 }
+

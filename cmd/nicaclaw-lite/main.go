@@ -1,3 +1,5 @@
+//go:build !lite
+
 // nicaclawlite - Ultra-lightweight personal AI agent
 // Inspired by and based on nanobot: https://github.com/HKUDS/nanobot
 // License: MIT

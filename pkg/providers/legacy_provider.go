@@ -3,6 +3,8 @@
 //
 // Copyright (c) 2026 nicaclawlite contributors
 
+//go:build !lite
+
 package providers
 
 import (

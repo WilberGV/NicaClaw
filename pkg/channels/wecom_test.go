@@ -1,5 +1,7 @@
+﻿//go:build !lite
+
 // nicaclawlite - Ultra-lightweight personal AI agent
-// WeCom Bot (企业微信智能机器人) channel tests
+// WeCom Bot (ä¼ä¸šå¾®ä¿¡æ™ºèƒ½æœºå™¨äºº) channel tests
 
 package channels
 
@@ -783,3 +785,4 @@ func TestWeComBotMessageStructure(t *testing.T) {
 		t.Errorf("Text.Content = %q, want %q", msg.Text.Content, "Hello World")
 	}
 }
+

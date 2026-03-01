@@ -1,3 +1,5 @@
+﻿//go:build !lite
+
 package channels
 
 import (
@@ -159,7 +161,7 @@ func (c *MaixCamChannel) handlePersonDetection(msg MaixCamMessage) {
 	w, _ := msg.Data["w"].(float64)
 	h, _ := msg.Data["h"].(float64)
 
-	content := fmt.Sprintf("📷 Person detected!\nClass: %s\nConfidence: %.2f%%\nPosition: (%.0f, %.0f)\nSize: %.0fx%.0f",
+	content := fmt.Sprintf("ðŸ“· Person detected!\nClass: %s\nConfidence: %.2f%%\nPosition: (%.0f, %.0f)\nSize: %.0fx%.0f",
 		classInfo, score*100, x, y, w, h)
 
 	metadata := map[string]string{
@@ -241,3 +243,4 @@ func (c *MaixCamChannel) Send(ctx context.Context, msg bus.OutboundMessage) erro
 
 	return sendErr
 }
+

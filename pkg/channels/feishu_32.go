@@ -1,4 +1,5 @@
-//go:build !amd64 && !arm64 && !riscv64 && !mips64 && !ppc64
+﻿//go:build !lite && !amd64 && !arm64 && !riscv64 && !mips64 && !ppc64
+
 
 package channels
 
@@ -36,3 +37,4 @@ func (c *FeishuChannel) Stop(ctx context.Context) error {
 func (c *FeishuChannel) Send(ctx context.Context, msg bus.OutboundMessage) error {
 	return errors.New("feishu channel is not supported on 32-bit architectures")
 }
+

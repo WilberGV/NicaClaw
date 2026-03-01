@@ -1,5 +1,7 @@
+﻿//go:build !lite
+
 // nicaclawlite - Ultra-lightweight personal AI agent
-// WeCom App (企业微信自建应用) channel tests
+// WeCom App (ä¼ä¸šå¾®ä¿¡è‡ªå»ºåº”ç”¨) channel tests
 
 package channels
 
@@ -1102,3 +1104,4 @@ func TestWeComAppXMLMessageEvent(t *testing.T) {
 		t.Errorf("EventKey = %q, want %q", msg.EventKey, "event_key_123")
 	}
 }
+

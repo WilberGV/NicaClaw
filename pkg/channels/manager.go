@@ -1,3 +1,5 @@
+﻿//go:build !lite
+
 // nicaclawlite - Ultra-lightweight personal AI agent
 // Inspired by and based on nanobot: https://github.com/HKUDS/nanobot
 // License: MIT
@@ -369,3 +371,4 @@ func (m *Manager) SendToChannel(ctx context.Context, channelName, chatID, conten
 
 	return channel.Send(ctx, msg)
 }
+

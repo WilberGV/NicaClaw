@@ -6,7 +6,7 @@ NicaClaw-lite is an ultra-efficient AI Assistant designed to run with minimal re
 
 ## 🖥 Windows
 
-1. **Download**: Obtain the latest `nicaclaw-lite.exe` from the [Releases](https://github.com/WilberGV/nicaclaw-lite/releases) page.
+1. **Download**: Obtain the latest `nicaclaw-lite.exe` from the [Releases](https://github.com/WilberGV/NicaClaw/releases) page.
 2. **Initialize**: Open a terminal (PowerShell or Command Prompt) and run:
    ```powershell
    .\nicaclaw-lite.exe onboard
@@ -25,7 +25,7 @@ Works on major distros like **Ubuntu, Debian, Fedora, Arch, and Centos**.
 
 1. **Download**:
    ```bash
-   wget https://github.com/WilberGV/nicaclaw-lite/releases/latest/download/nicaclaw-lite-linux-amd64
+   wget https://github.com/WilberGV/NicaClaw/releases/latest/download/nicaclaw-lite-linux-amd64
    chmod +x nicaclaw-lite-linux-amd64
    sudo mv nicaclaw-lite-linux-amd64 /usr/local/bin/nicaclaw-lite
    ```
@@ -49,7 +49,7 @@ Turn your old phone into an AI assistant.
    ```
 3. **Download & Run**:
    ```bash
-   wget https://github.com/WilberGV/nicaclaw-lite/releases/latest/download/nicaclaw-lite-linux-arm64
+   wget https://github.com/WilberGV/NicaClaw/releases/latest/download/nicaclaw-lite-linux-arm64
    chmod +x nicaclaw-lite-linux-arm64
    termux-chroot ./nicaclaw-lite-linux-arm64 onboard
    ```
@@ -63,7 +63,7 @@ For developers who want the latest features.
 1. **Prerequisites**: [Go 1.21+](https://go.dev/dl/) installed.
 2. **Clone & Build**:
    ```bash
-   git clone https://github.com/WilberGV/nicaclaw-lite.git
+   git clone https://github.com/WilberGV/NicaClaw.git
    cd nicaclaw-lite
    make build
    ```

@@ -84,6 +84,8 @@ func CreateProviderFromConfig(cfg *config.ModelConfig) (LLMProvider, string, err
 			apiBase = "https://api.anthropic.com/v1"
 		case "ollama":
 			apiBase = "http://localhost:11434/v1"
+		case "google":
+			apiBase = "https://generativelanguage.googleapis.com/v1beta/openai"
 		default:
 			apiBase = "https://api.openai.com/v1"
 		}
@@ -120,18 +122,7 @@ func CreateProvider(cfg *config.Config) (LLMProvider, string, error) {
 		return NewHTTPProvider(sel.apiKey, sel.apiBase, sel.proxy), modelID, nil
 	}
 
-	// Simple non-dynamic creation for lite build
-	// Just use the first matching model config or the first one available
-	var modelCfg *config.ModelConfig
-	for i := range cfg.ModelList {
-		if cfg.ModelList[i].Model == model {
-			modelCfg = &cfg.ModelList[i]
-			break
-		}
-	}
-	if modelCfg == nil {
-		modelCfg = &cfg.ModelList[0]
-	}
-
-	return CreateProviderFromConfig(modelCfg)
+	// Use DynamicProviderLite for multi-key fallback support.
+	// This allows FallbackChain to resolve different API keys per attempt.
+	return NewDynamicProviderLite(cfg), model, nil
 }

@@ -479,10 +479,13 @@ func (al *AgentLoop) runLLMIteration(
 			}
 
 			errMsg := strings.ToLower(err.Error())
-			isContextError := strings.Contains(errMsg, "token") ||
+			isContextError := (strings.Contains(errMsg, "token") ||
 				strings.Contains(errMsg, "context") ||
 				strings.Contains(errMsg, "invalidparameter") ||
-				strings.Contains(errMsg, "length")
+				strings.Contains(errMsg, "length")) &&
+				!strings.Contains(errMsg, "quota") &&
+				!strings.Contains(errMsg, "rate limit") &&
+				!strings.Contains(errMsg, "429")
 
 			if isContextError && retry < maxRetries {
 				logger.WarnCF("agent", "Context window error detected, attempting compression", map[string]any{

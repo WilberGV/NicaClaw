@@ -1,0 +1,26 @@
+#!/bin/bash
+# Pre-receive hook: validate pushes
+LOG=/home/wilserver/nicaclaw-autoimprove.log
+while read oldrev newrev refname; do
+    TMPDIR=$(mktemp -d)
+    git archive "$newrev" | tar -x -C "$TMPDIR"
+    if [ -f "$TMPDIR/go.mod" ]; then
+        cd "$TMPDIR"
+        echo "$(date '+%Y-%m-%d %H:%M:%S') PRE-RECEIVE: Validating push $newrev ..." >> $LOG
+        # Build check
+        CGO_ENABLED=0 go build -ldflags="-s -w" -o /tmp/test-bin ./cmd/nicaclaw-lite >> $LOG 2>&1
+        if [ $? -ne 0 ]; then
+            echo "BUILD FAIL — push rejected"
+            rm -rf "$TMPDIR"
+            exit 1
+        fi
+        # Test check
+        go test ./... >> $LOG 2>&1
+        if [ $? -ne 0 ]; then
+            echo "TEST FAIL — push rejected"
+            rm -rf "$TMPDIR"
+            exit 1
+        fi
+        rm -rf "$TMPDIR"
+    fi
+done

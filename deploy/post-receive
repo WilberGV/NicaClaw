@@ -1,0 +1,11 @@
+#!/bin/bash
+# Post-receive hook: auto-deploy after push
+LOG=/home/wilserver/nicaclaw-autoimprove.log
+INSTALL_DIR=/home/wilserver/nicaclaw-lite
+echo "$(date '+%Y-%m-%d %H:%M:%S') POST-RECEIVE: Deploy triggered" >> $LOG
+if [ -d "$INSTALL_DIR/.git" ]; then
+    cd $INSTALL_DIR && git pull origin master >> $LOG 2>&1
+else
+    git clone /home/wilserver/nicaclaw-shared.git $INSTALL_DIR >> $LOG 2>&1
+fi
+echo "$(date '+%Y-%m-%d %H:%M:%S') POST-RECEIVE: Deploy complete" >> $LOG

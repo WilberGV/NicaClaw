@@ -158,13 +158,13 @@ func (al *AgentLoop) RecordLastChatID(chatID string) error {
 	return al.state.SetLastChatID(chatID)
 }
 
-func (al *AgentLoop) ProcessDirect(ctx context.Context, content, sessionKey string) (string, error) {
-	return al.ProcessDirectWithChannel(ctx, content, sessionKey, "cli", "direct")
+func (al *AgentLoop) ProcessDirect(ctx context.Context, content, sessionKey, agentID string) (string, error) {
+	return al.ProcessDirectWithChannel(ctx, content, sessionKey, "cli", "direct", agentID)
 }
 
 func (al *AgentLoop) ProcessDirectWithChannel(
 	ctx context.Context,
-	content, sessionKey, channel, chatID string,
+	content, sessionKey, channel, chatID, agentID string,
 ) (string, error) {
 	msg := bus.InboundMessage{
 		Channel:    channel,
@@ -172,6 +172,7 @@ func (al *AgentLoop) ProcessDirectWithChannel(
 		ChatID:     chatID,
 		Content:    content,
 		SessionKey: sessionKey,
+		AgentID:    agentID,
 	}
 
 	return al.processMessage(ctx, msg)
@@ -229,7 +230,12 @@ func (al *AgentLoop) processMessage(ctx context.Context, msg bus.InboundMessage)
 		TeamID:     msg.Metadata["team_id"],
 	})
 
-	agent, ok := al.registry.GetAgent(route.AgentID)
+	agentID := route.AgentID
+	if msg.AgentID != "" {
+		agentID = msg.AgentID
+	}
+
+	agent, ok := al.registry.GetAgent(agentID)
 	if !ok {
 		agent = al.registry.GetDefaultAgent()
 	}
